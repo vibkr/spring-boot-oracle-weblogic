@@ -5,7 +5,7 @@
 
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>com.unilever.api.unileverheartbeatapi.UnileverHeartbeatApiApplication</param-value>
+        <param-value>com.unilever.api.unileverheartbeatapi.UnileverHeartBeatApiApplication</param-value>
     </context-param>
 
     <listener>
