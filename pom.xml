@@ -4,11 +4,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.unilever.api</groupId>
-    <artifactId>UnileverHeartbeatApi</artifactId>
+    <artifactId>UnileverHeartBeatApi</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
 
-    <name>UnileverHeartbeatApi</name>
+    <name>UnileverHeartBeatApi</name>
     <description>REST API For HeartBeat UI</description>
 
     <parent>
