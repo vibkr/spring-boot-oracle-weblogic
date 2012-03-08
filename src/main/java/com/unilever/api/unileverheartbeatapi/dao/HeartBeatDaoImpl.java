@@ -46,41 +46,41 @@ public class HeartBeatDaoImpl implements HeartBeatDao{
     private JdbcTemplate uunl36JdbcTemplate;
 
     // For QA Instances
-//    @Autowired
-//    @Qualifier("uunl56JdbcTemplate")
-//    private JdbcTemplate uunl56JdbcTemplate;
-//    @Autowired
-//    @Qualifier("tunl86JdbcTemplate")
-//    private JdbcTemplate tunl86JdbcTemplate;
-//    @Autowired
-//    @Qualifier("dunl56JdbcTemplate")
-//    private JdbcTemplate dunl56JdbcTemplate;
-//    @Autowired
-//    @Qualifier("uunl16JdbcTemplate")
-//    private JdbcTemplate uunl16JdbcTemplate;
-//    @Autowired
-//    @Qualifier("uunl46JdbcTemplate")
-//    private JdbcTemplate uunl46JdbcTemplate;
-//    @Autowired
-//    @Qualifier("sunlv6JdbcTemplate")
-//    private JdbcTemplate sunlv6JdbcTemplate;
+    @Autowired
+    @Qualifier("uunl56JdbcTemplate")
+    private JdbcTemplate uunl56JdbcTemplate;
+    @Autowired
+    @Qualifier("tunl86JdbcTemplate")
+    private JdbcTemplate tunl86JdbcTemplate;
+    @Autowired
+    @Qualifier("dunl56JdbcTemplate")
+    private JdbcTemplate dunl56JdbcTemplate;
+    @Autowired
+    @Qualifier("uunl16JdbcTemplate")
+    private JdbcTemplate uunl16JdbcTemplate;
+    @Autowired
+    @Qualifier("uunl46JdbcTemplate")
+    private JdbcTemplate uunl46JdbcTemplate;
+    @Autowired
+    @Qualifier("sunlv6JdbcTemplate")
+    private JdbcTemplate sunlv6JdbcTemplate;
 
     // For Dev Instances
-//    @Autowired
-//    @Qualifier("uunl76JdbcTemplate")
-//    private JdbcTemplate uunl76JdbcTemplate;
-//    @Autowired
-//    @Qualifier("sunl36JdbcTemplate")
-//    private JdbcTemplate sunl36JdbcTemplate;
-//    @Autowired
-//    @Qualifier("sunl26JdbcTemplate")
-//    private JdbcTemplate sunl26JdbcTemplate;
-//    @Autowired
-//    @Qualifier("sunl56JdbcTemplate")
-//    private JdbcTemplate sunl56JdbcTemplate;
-//    @Autowired
-//    @Qualifier("uunl26JdbcTemplate")
-//    private JdbcTemplate uunl26JdbcTemplate;
+    @Autowired
+    @Qualifier("uunl76JdbcTemplate")
+    private JdbcTemplate uunl76JdbcTemplate;
+    @Autowired
+    @Qualifier("sunl36JdbcTemplate")
+    private JdbcTemplate sunl36JdbcTemplate;
+    @Autowired
+    @Qualifier("sunl26JdbcTemplate")
+    private JdbcTemplate sunl26JdbcTemplate;
+    @Autowired
+    @Qualifier("sunl56JdbcTemplate")
+    private JdbcTemplate sunl56JdbcTemplate;
+    @Autowired
+    @Qualifier("uunl26JdbcTemplate")
+    private JdbcTemplate uunl26JdbcTemplate;
 
     private ServiceUtils serviceUtils = new ServiceUtils();
 
@@ -134,28 +134,28 @@ public class HeartBeatDaoImpl implements HeartBeatDao{
                     return uunlv6JdbcTemplate;
                 case UUNL36:
                     return uunl36JdbcTemplate;
-//                case UUNL56:
-//                    return uunl56JdbcTemplate;
-//                case TUNL86:
-//                    return tunl86JdbcTemplate;
-//                case DUNL56:
-//                    return dunl56JdbcTemplate;
-//                case UUNL16:
-//                    return uunl16JdbcTemplate;
-//                case UUNL46:
-//                    return uunl46JdbcTemplate;
-//                case SUNLV6:
-//                    return sunlv6JdbcTemplate;
-//                case UUNL76:
-//                    return uunl76JdbcTemplate;
-//                case SUNL36:
-//                    return sunl36JdbcTemplate;
-//                case SUNL26:
-//                    return sunl26JdbcTemplate;
-//                case SUNL56:
-//                    return sunl56JdbcTemplate;
-//                case UUNL26:
-//                    return uunl26JdbcTemplate;
+                case UUNL56:
+                    return uunl56JdbcTemplate;
+                case TUNL86:
+                    return tunl86JdbcTemplate;
+                case DUNL56:
+                    return dunl56JdbcTemplate;
+                case UUNL16:
+                    return uunl16JdbcTemplate;
+                case UUNL46:
+                    return uunl46JdbcTemplate;
+                case SUNLV6:
+                    return sunlv6JdbcTemplate;
+                case UUNL76:
+                    return uunl76JdbcTemplate;
+                case SUNL36:
+                    return sunl36JdbcTemplate;
+                case SUNL26:
+                    return sunl26JdbcTemplate;
+                case SUNL56:
+                    return sunl56JdbcTemplate;
+                case UUNL26:
+                    return uunl26JdbcTemplate;
                 default:
                     throw new IllegalArgumentException("Invalid DataSourceName " + dataSourceName);
             }
@@ -164,37 +164,5 @@ public class HeartBeatDaoImpl implements HeartBeatDao{
         return null;
     }
 
-//    public List<OtmToPi> selectDemoList() {
-//        String query = "SELECT * FROM demo";
-//        RowMapper<OtmToPi> rowMapper = new BeanPropertyRowMapper<OtmToPi>(OtmToPi.class);
-//        return jdbcTemplate.query(query, rowMapper);
-//    }
-
-
-//    public int selectDemoCount() {
-//        String query = "SELECT COUNT(*) FROM demo";
-//        return jdbcTemplate.queryForObject(query, Integer.class);
-//    }
-//
-//    public Demo selectDemo(int seq) {
-//        String query = "SELECT * FROM demo WHERE seq = ?";
-//        RowMapper<Demo> rowMapper = new BeanPropertyRowMapper<Demo>(Demo.class);
-//        return jdbcTemplate.queryForObject(query, rowMapper, seq);
-//    }
-//
-//    public int insertDemo(Demo demo) {
-//        String query = "INSERT INTO demo ( name, age, hobby ) values ( ?, ?, ? )";
-//        return jdbcTemplate.update(query, demo.getName(), demo.getAge(), demo.getHobby());
-//    }
-//
-//    public int updateDemo(Demo demo) {
-//        String query = "UPDATE demo SET name = ?, age = ?, hobby = ? WHERE seq = ?";
-//        return jdbcTemplate.update(query, demo.getName(), demo.getAge(), demo.getHobby(), demo.getSeq());
-//    }
-//
-//    public int deleteDemo(int seq) {
-//        String query = "DELETE FROM demo WHERE seq = ?";
-//        return jdbcTemplate.update(query, seq);
-//    }
 
 }
