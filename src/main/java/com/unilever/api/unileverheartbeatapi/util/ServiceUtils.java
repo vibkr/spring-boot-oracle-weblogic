@@ -18,6 +18,16 @@ public class ServiceUtils {
     public String getRegionName(String dataSourceName) {
         if(!StringUtils.isEmpty(dataSourceName)) {
             switch (dataSourceName) {
+                case PUNL76:
+                    return FUSION;
+                case PUNL36:
+                    return AAR;
+                case PUNL26:
+                    return EUROPE;
+                case PUNL56:
+                    return NA;
+                case PUNL66:
+                    return LATAM;
                 case UUNL86:
                     return FUSION;
                 case TUNL76:
@@ -61,10 +71,20 @@ public class ServiceUtils {
     public String getInstanceName(String dataSourceName) {
         if(!StringUtils.isEmpty(dataSourceName)) {
             switch (dataSourceName) {
+                case PUNL76:
+                    return PUNL76+"-"+FUSION;
+                case PUNL36:
+                    return PUNL36+"-"+AAR;
+                case PUNL26:
+                    return PUNL26+"-"+EUROPE;
+                case PUNL56:
+                    return PUNL56+"-"+ NA;
+                case PUNL66:
+                    return PUNL66+"-"+LATAM;
                 case UUNL86:
-                    return FUSION+"-"+UUNL86;
+                    return UUNL86+"-"+FUSION;
                 case TUNL76:
-                    return AAR+"-"+TUNL76;
+                    return TUNL76+"-"+AAR;
                 case DUNL46:
                     return DUNL46+"-"+EUROPE;
                 case UUNLV6:

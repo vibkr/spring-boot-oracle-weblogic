@@ -30,57 +30,22 @@ public class HeartBeatDaoImpl implements HeartBeatDao{
 
     // For Dev Instances
     @Autowired
-    @Qualifier("uunl86JdbcTemplate")
-    private JdbcTemplate uunl86JdbcTemplate;
+    @Qualifier("punl76JdbcTemplate")
+    private JdbcTemplate punl76JdbcTemplate;
     @Autowired
-    @Qualifier("tunl76JdbcTemplate")
-    private JdbcTemplate tunl76JdbcTemplate;
+    @Qualifier("punl36JdbcTemplate")
+    private JdbcTemplate punl36JdbcTemplate;
     @Autowired
-    @Qualifier("dunl46JdbcTemplate")
-    private JdbcTemplate dunl46JdbcTemplate;
+    @Qualifier("punl26JdbcTemplate")
+    private JdbcTemplate punl26JdbcTemplate;
     @Autowired
-    @Qualifier("uunlv6JdbcTemplate")
-    private JdbcTemplate uunlv6JdbcTemplate;
+    @Qualifier("punl66JdbcTemplate")
+    private JdbcTemplate punl66JdbcTemplate;
     @Autowired
-    @Qualifier("uunl36JdbcTemplate")
-    private JdbcTemplate uunl36JdbcTemplate;
+    @Qualifier("punl56JdbcTemplate")
+    private JdbcTemplate punl56JdbcTemplate;
 
-    // For QA Instances
-    @Autowired
-    @Qualifier("uunl56JdbcTemplate")
-    private JdbcTemplate uunl56JdbcTemplate;
-    @Autowired
-    @Qualifier("tunl86JdbcTemplate")
-    private JdbcTemplate tunl86JdbcTemplate;
-    @Autowired
-    @Qualifier("dunl56JdbcTemplate")
-    private JdbcTemplate dunl56JdbcTemplate;
-    @Autowired
-    @Qualifier("uunl16JdbcTemplate")
-    private JdbcTemplate uunl16JdbcTemplate;
-    @Autowired
-    @Qualifier("uunl46JdbcTemplate")
-    private JdbcTemplate uunl46JdbcTemplate;
-    @Autowired
-    @Qualifier("sunlv6JdbcTemplate")
-    private JdbcTemplate sunlv6JdbcTemplate;
 
-    // For Dev Instances
-    @Autowired
-    @Qualifier("uunl76JdbcTemplate")
-    private JdbcTemplate uunl76JdbcTemplate;
-    @Autowired
-    @Qualifier("sunl36JdbcTemplate")
-    private JdbcTemplate sunl36JdbcTemplate;
-    @Autowired
-    @Qualifier("sunl26JdbcTemplate")
-    private JdbcTemplate sunl26JdbcTemplate;
-    @Autowired
-    @Qualifier("sunl56JdbcTemplate")
-    private JdbcTemplate sunl56JdbcTemplate;
-    @Autowired
-    @Qualifier("uunl26JdbcTemplate")
-    private JdbcTemplate uunl26JdbcTemplate;
 
     private ServiceUtils serviceUtils = new ServiceUtils();
 
@@ -124,38 +89,16 @@ public class HeartBeatDaoImpl implements HeartBeatDao{
     private JdbcTemplate getJdbcTemplate(String dataSourceName) {
         if(!StringUtils.isEmpty(dataSourceName)) {
             switch (dataSourceName) {
-                case UUNL86:
-                    return uunl86JdbcTemplate;
-                case TUNL76:
-                    return tunl76JdbcTemplate;
-                case DUNL46:
-                    return dunl46JdbcTemplate;
-                case UUNLV6:
-                    return uunlv6JdbcTemplate;
-                case UUNL36:
-                    return uunl36JdbcTemplate;
-                case UUNL56:
-                    return uunl56JdbcTemplate;
-                case TUNL86:
-                    return tunl86JdbcTemplate;
-                case DUNL56:
-                    return dunl56JdbcTemplate;
-                case UUNL16:
-                    return uunl16JdbcTemplate;
-                case UUNL46:
-                    return uunl46JdbcTemplate;
-                case SUNLV6:
-                    return sunlv6JdbcTemplate;
-                case UUNL76:
-                    return uunl76JdbcTemplate;
-                case SUNL36:
-                    return sunl36JdbcTemplate;
-                case SUNL26:
-                    return sunl26JdbcTemplate;
-                case SUNL56:
-                    return sunl56JdbcTemplate;
-                case UUNL26:
-                    return uunl26JdbcTemplate;
+                case PUNL76:
+                    return punl76JdbcTemplate;
+                case PUNL36:
+                    return punl36JdbcTemplate;
+                case PUNL26:
+                    return punl26JdbcTemplate;
+                case PUNL66:
+                    return punl66JdbcTemplate;
+                case PUNL56:
+                    return punl56JdbcTemplate;
                 default:
                     throw new IllegalArgumentException("Invalid DataSourceName " + dataSourceName);
             }

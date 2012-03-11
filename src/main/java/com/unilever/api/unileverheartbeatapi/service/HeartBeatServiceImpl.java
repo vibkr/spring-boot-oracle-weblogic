@@ -114,6 +114,16 @@ public class HeartBeatServiceImpl implements HeartBeatService {
         return  dataSourceList;
     }
 
+    private List<String> getProdDataSources() {
+        List<String> dataSourceList = new ArrayList<String>();
+        dataSourceList.add(PUNL76);
+        dataSourceList.add(PUNL36);
+        dataSourceList.add(PUNL26);
+        dataSourceList.add(PUNL66);
+        dataSourceList.add(PUNL56);
+        return  dataSourceList;
+    }
+
     public List<ThresholdReport> getThresholdReport(String dataSource){
         return  heartBeatDao.getThresholdReport(dataSource);
 
@@ -133,7 +143,7 @@ public class HeartBeatServiceImpl implements HeartBeatService {
         } else if(RT.equalsIgnoreCase(serverName)) {
             dataSourceList = getRTDataSources();
         } else if(PROD.equalsIgnoreCase(serverName)) {
-            dataSourceList = getQADataSources();
+            dataSourceList = getProdDataSources();
         }
         return dataSourceList;
     }

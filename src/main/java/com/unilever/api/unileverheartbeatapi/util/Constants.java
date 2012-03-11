@@ -43,6 +43,14 @@ public class Constants {
     public static final String SUNL56 = "SUNL56";
     public static final String UUNL26 = "UUNL26";
 
+
+    // PROD Server Instances
+    public static final String PUNL36 = "PUNL36";
+    public static final String PUNL26 = "PUNL26";
+    public static final String PUNL76 = "PUNL76";
+    public static final String PUNL66 = "PUNL66";
+    public static final String PUNL56 = "PUNL56";
+
     public static final String FUSION = "FUSION";
     public static final String AAR = "AAR";
     public static final String EUROPE = "EUROPE";
