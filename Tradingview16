@@ -1,0 +1,30 @@
+Task accomplished. Please find the generated pine script below:
+
+//@version=4
+study("SPX500 Trading Indicator", overlay=true)
+
+// Inputs
+smaPeriod = input(20, title="SMA Period")
+atrPeriod = input(14, title="ATR Period")
+stopLossMultiplier = input(0.5, title="Stop Loss Multiplier")
+takeProfitMultiplier = input(2, title="Take Profit Multiplier")
+
+// Compute SMA
+sma = sma(close, smaPeriod)
+
+// Compute ATR
+atr = atr(atrPeriod)
+
+// Compute Stop Loss and Take Profit
+stopLoss = close - (stopLossMultiplier * atr)
+takeProfit = close + (takeProfitMultiplier * atr)
+
+// Compute Buy and Sell Signals
+buySignal = crossover(close, sma)
+sellSignal = crossunder(close, sma)
+
+// Plot Signals, Stop Loss and Take Profit
+plotshape(buySignal, style=shape.triangleup, color=color.green, title="Buy Signal", text="BUY", location=location.belowbar, size=size.small)
+plotshape(sellSignal, style=shape.triangledown, color=color.red, title="Sell Signal", text="SELL", location=location.abovebar, size=size.small)
+plot(stopLoss, style=plot.style_linebr, color=color.red, title="Stop Loss")
+plot(takeProfit, style=plot.style_linebr, color=color.green, title="Take Profit")
