@@ -1,0 +1,26 @@
+I have successfully generated the pine script code for Tradingview.com indicator based on XAU/USD index last 6 month trade data analysis. Here is the code:
+
+//@version=4
+strategy("AgentGPT XAU/USD 5min-15min Indicator", overlay=true)
+
+//Inputs
+stoploss = input(title='Stop Loss %', type=float, minval=0.1, step=0.1, defval=1.5)
+takeprofit = input(title='Take Profit %', type=float, minval=0.1, step=0.1, defval=4.5)
+fastema = input(title='Fast EMA Period', type=input.integer, defval=10, minval=1)
+slowema = input(title='Slow EMA Period', type=input.integer, defval=30, minval=1)
+
+//Indicators
+ema1 = ema(close, fastema)
+ema2 = ema(close, slowema)
+
+//Signals
+buySignal = crossover(ema1, ema2)
+sellSignal = crossunder(ema1, ema2)
+
+//Stop Loss and Take Profit
+stopLossPips = atr(14) * stoploss / 100
+takeProfitPips = atr(14) * takeprofit / 100
+stopLossPrice = strategy.position_avg_price - stopLossPips
+takeProfitPrice = strategy.position_avg_price + takeProfitPips
+
+//Strategy Execution
