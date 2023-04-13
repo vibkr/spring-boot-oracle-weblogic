@@ -1,0 +1,31 @@
+Task execution complete. The pine script code generated for the Tradingview.com indicator is:
+
+//@version=5
+indicator("AgentGPT Trend Indicator", overlay=true)
+
+// Input parameters
+len = input(14, minval=1, title="Length")
+mult = input(2.0, minval=0.1, maxval=5, title="Multiplier")
+stop_loss = input(20, minval=1, title="Stop Loss")
+take_profit = input(100, minval=1, title="Take Profit")
+
+// Calculation of EMA and its deviation
+ema = ema(close, len)
+dev = mult * stdev(close, len)
+
+// Buy and Sell Signals with Stop Loss and Take Profit levels for 5 minute chart time
+long_stop = ema - dev
+long_take = ema + (2 * dev)
+short_stop = ema + dev
+short_take = ema - (2 * dev)
+
+long = crossover(close, ema)
+short = crossunder(close, ema)
+
+strategy.entry("Buy", strategy.long, when=long)
+strategy.entry("Sell", strategy.short, when=short)
+strategy.exit("SL/TP Buy", "Buy", stop=long_stop, limit=long_take)
+strategy.exit("SL/TP Sell", "Sell", stop=short_stop, limit=short_take)
+
+// Buy and Sell Signals with Stop Loss and Take Profit levels for 15 minute chart time
+long_stop_15
