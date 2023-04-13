@@ -1,0 +1,30 @@
+
+
+//@version=4
+strategy("XAU/USD Trading Indicator", overlay=true)
+
+// Set input options
+fast_ma_length = input(title="Fast Moving Average Length", type=input.integer, defval=10, minval=1)
+slow_ma_length = input(title="Slow Moving Average Length", type=input.integer, defval=20, minval=1)
+rsi_length = input(title="RSI Length", type=input.integer, defval=14, minval=1)
+
+// Calculate moving averages and RSI
+fast_ma = sma(close, fast_ma_length)
+slow_ma = sma(close, slow_ma_length)
+rsi = rsi(close, rsi_length)
+
+// Calculate buy and sell triggers
+buy_trigger = crossover(fast_ma, slow_ma) and rsi < 30
+sell_trigger = crossunder(fast_ma, slow_ma) and rsi > 70
+
+// Define stop loss and take profit levels
+stop_loss = atr(14) * 2
+take_profit = atr(14) * 6
+
+// Execute buy and sell trades
+if buy_trigger
+    strategy.entry("Buy", strategy.long)
+    strategy.exit("Buy", "Stop Loss", stop=close - stop_loss, limit=close + take_profit)
+if sell_trigger
+    strategy.entry("Sell", strategy.short)
+    strategy.exit("Sell", "Stop Loss", stop=close + stop_loss,
