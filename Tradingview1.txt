@@ -1,0 +1,31 @@
+Task complete. Pine script generated:
+
+//@version=4
+study(title="XAU/USD Trade Analysis", shorttitle="XAU/USD Analysis", overlay=true)
+
+// Moving Averages
+fast_ma = sma(close, 20)
+slow_ma = sma(close, 50)
+
+// Buy Signal
+buy_signal = crossover(fast_ma, slow_ma)
+plotshape(buy_signal, title="Buy Signal", style=shape.triangleup, location=location.belowbar, color=color.green, size=size.small)
+
+// Sell Signal
+sell_signal = crossunder(fast_ma, slow_ma)
+plotshape(sell_signal, title="Sell Signal", style=shape.triangledown, location=location.abovebar, color=color.red, size=size.small)
+
+// Risk:Reward Ratio
+take_profit = 3 * atr(14)
+stop_loss = atr(14)
+
+// Strategy Tester
+strategy.entry("Buy", strategy.long, when=buy_signal)
+strategy.exit("Sell", "Buy", limit=close + take_profit, stop=close - stop_loss)
+strategy.entry("Sell", strategy.short, when=sell_signal)
+strategy.exit("Buy", "Sell", limit=close - take_profit, stop=close + stop_loss)
+
+// Downloadable Script
+study("XAU/USD Analysis - Downloadable Script", overlay=true)
+plot(fast_ma, title="Fast MA", color=color.blue)
+plot(slow_ma, title="Slow MA", color=color
