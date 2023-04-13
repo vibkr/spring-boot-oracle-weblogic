@@ -1,0 +1,24 @@
+I have generated the Pine Script code for the Tradingview.com indicator based on the algorithm developed in step 2. The code is as follows:
+
+//@version=4
+strategy("SPX500 Trading Indicator", overlay=true)
+
+// Set inputs
+var float stopLoss = input(title="Stop Loss %", defval=0.5, type=float, minval=0.1, maxval=5, step=0.1)
+var float takeProfit = input(title="Take Profit %", defval=2.5, type=float, minval=1, maxval=10, step=0.5)
+var int timeFrame = input(title="Select Time Frame", defval=5, type=integer, minval=1, maxval=30)
+var int emaPeriod = input(title="EMA Period", defval=20, type=integer, minval=5, maxval=200, step=5)
+
+// Calculate EMA
+ema = ema(close, emaPeriod)
+
+// Calculate stop loss and take profit levels
+stopLossPrice = ema * (1 - stopLoss / 100)
+takeProfitPrice = ema * (1 + takeProfit / 100)
+
+// Calculate buy and sell signals
+buySignal = crossover(close, ema)
+sellSignal = crossunder(close, ema)
+
+// Plot buy and sell signals
+plotshape(buySignal, title="Buy Signal", style=shape.triangleup,
