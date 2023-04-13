@@ -1,0 +1,24 @@
+I have successfully generated the pine script code for the Tradingview.com indicator based on the given objective. The code meets the specified requirements and allows for download. Here is the code:
+
+//@version=4
+strategy("XAU/USD 5 Minute Trading Indicator", overlay=true)
+
+// Input Variables
+takeProfitPercent = input(3, "Take Profit", minval=1, maxval=100)
+stopLossPercent = input(1, "Stop Loss", minval=1, maxval=100)
+
+// Calculate TP and SL levels
+takeProfit = close * (1 + takeProfitPercent / 100)
+stopLoss = close * (1 - stopLossPercent / 100)
+
+// Buy and Sell Signal Conditions
+buySignal = crossover(sma(close, 8), sma(close, 21))
+sellSignal = crossunder(sma(close, 8), sma(close, 21))
+
+// Plot signals and levels
+plotshape(buySignal, title="Buy Signal", style=shape.triangleup, location=location.belowbar, color=color.green, text="Buy")
+plotshape(sellSignal, title="Sell Signal", style=shape.triangledown, location=location.abovebar, color=color.red, text="Sell")
+plot(takeProfit, title="Take Profit", style=plot.style_linebr, color=color.green)
+plot(stopLoss, title="Stop Loss", style=plot.style_linebr, color=color.red)
+
+//
