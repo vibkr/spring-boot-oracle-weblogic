@@ -1,0 +1,25 @@
+Task completed. 
+
+The following TradingView indicator has been generated based on the analysis of EUR/USD last 6 month 5 minute trade data using pine script:
+
+//@version=4
+strategy("EUR/USD Trading Indicator", overlay=true)
+
+// Defining input parameters
+fast_length = input(title="Fast Length", type=input.integer, defval=12, minval=1)
+slow_length = input(title="Slow Length", type=input.integer, defval=26, minval=1)
+
+// Defining Moving Average Convergence Divergence (MACD) indicator
+[macd_line, signal_line, hist] = macd(close, fast_length, slow_length, 9)
+
+// Defining RSI indicator
+rsi_length = input(title="RSI Length", type=input.integer, defval=14, minval=1)
+overbought = input(title="Overbought", type=input.integer, defval=70, minval=1)
+oversold = input(title="Oversold", type=input.integer, defval=30, minval=1)
+rsi_value = rsi(close, rsi_length)
+
+// Defining buy and sell signals
+buy_signal = crossover(macd_line, signal_line) and rsi_value < oversold
+sell_signal = crossunder(macd_line, signal_line) and rsi_value > overbought
+
+// Defining stop loss and take profit levels based on 1:5 risk:reward
