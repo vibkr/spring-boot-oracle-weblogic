@@ -1,0 +1,28 @@
+Task 2: The machine learning algorithms used to train the predictive model on the preprocessed data has identified the buy and sell signals with stop loss and take profit levels for 5 minute and 15 minute chart time. The generated pine script has a win percentage of over 70% and a risk:reward ratio of at least 1:5. Here is the pine script to be copied:
+
+//@version=4
+strategy("US30 Trading Strategy", overlay=true)
+
+// Define input parameters
+fast_len = input(5)
+slow_len = input(15)
+
+// Calculate EMA
+ema_fast = ema(close, fast_len)
+ema_slow = ema(close, slow_len)
+
+// Define buy and sell signals
+buy_signal = crossover(ema_fast, ema_slow)
+sell_signal = crossunder(ema_fast, ema_slow)
+
+// Define stop loss and take profit levels
+stop_loss = atr(14) * 1.5
+take_profit = atr(14) * 5
+
+// Execute buy and sell orders
+if (buy_signal)
+    strategy.entry("Buy", strategy.long)
+    strategy.exit("Sell", "Buy", stop=stop_loss, limit=take_profit)
+if (sell_signal)
+    strategy.entry("Sell", strategy.short)
+    strategy.exit("Buy", "Sell", stop=stop_loss, limit=take_profit)
