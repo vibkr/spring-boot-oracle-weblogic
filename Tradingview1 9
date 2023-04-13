@@ -1,0 +1,31 @@
+Task 2 response:
+
+Dear user, based on the analysis of the US30 index last 6 month 5 minute trade data, I have created a prototype Tradingview.com indicator using Pine Script. The indicator generates buy and sell signals with stop loss and take profit levels for 5 minute and 15 minute chart time.
+
+The Pine script code is as follows:
+
+//@version=4
+strategy("US30 5M/15M Trading Indicator", overlay=true)
+
+// Create the RSI indicator
+rsiLength = input(14)
+rsi = rsi(close, rsiLength)
+
+// Create moving averages
+fastMA = ema(close, 5)
+slowMA = ema(close, 10)
+
+// Define the stop loss and take profit levels
+stopLoss = atr(14) * 1.5
+takeProfit = atr(14) * 5
+
+// Determine buy and sell signals based on RSI and moving averages
+buySignal = crossover(fastMA, slowMA) and rsi < 30
+sellSignal = crossunder(fastMA, slowMA) and rsi > 70
+
+// Place stop loss and take profit levels
+strategy.exit("Stop Loss/Profit", "Long", stop=close - stopLoss, limit=close + takeProfit)
+strategy.exit("Stop Loss/Profit", "Short", stop=close + stopLoss, limit=close - takeProfit)
+
+// Execute trades based on buy and sell signals
+if
